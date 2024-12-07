@@ -84,20 +84,22 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="pt-6">
-              <button className="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition duration-300 mb-4 md:mb-0">
+              <button className="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition duration-300 mb-4 md:mb-4">
                 Contact Us
               </button>
             </div>
           </div>
 
           {/* Right Column - Hero Image */}
-          <div className="relative w-full h-full rounded-lg overflow-hidden order-1">
+          <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-lg overflow-hidden order-1 md:order-2 md:mb-5">
             <Image
               src="/hero.png"
               alt="Support Educational Consultancy"
-              width={450}
-              height={450}
-              className="w-full h-full object-cover object-center rounded-lg transition-transform duration-300 hover:scale-105"
+              fill
+              className="object-contain md:object-cover object-center rounded-lg transition-transform duration-300 hover:scale-105"
+              sizes="(max-width: 768px) 100vw,
+           (max-width: 1280px) 50vw,
+           50vw"
               priority
             />
           </div>
