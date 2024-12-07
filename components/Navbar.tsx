@@ -8,8 +8,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full z-50 transition-all duration-300 bg-[#000080] shadow-lg 
-      sticky top-0 z-50">
+    <nav
+      className="w-full z-50 transition-all duration-300 bg-[#000080] shadow-lg 
+      sticky top-0 z-50"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -122,6 +124,7 @@ const Navbar = () => {
                 item.toLowerCase() === 'home' ? '' : item.toLowerCase()
               }`}
               className="text-white hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
+              onClick={() => setIsOpen(false)}
             >
               {item}
             </Link>
