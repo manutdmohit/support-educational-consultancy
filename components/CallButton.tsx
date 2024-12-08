@@ -1,6 +1,6 @@
 import { FaCommentDots } from 'react-icons/fa';
 
-const number = '+977015920126';
+const number = '+9779851036204';
 
 const CallButton = () => {
   return (
