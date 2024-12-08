@@ -160,7 +160,7 @@ const Navbar = () => {
               transition={{ type: 'spring', duration: 0.5 }}
               className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto mt-5"
             >
-              <div className="absolute -top-1 -right-2">
+              <div className="absolute top-1 right-2">
                 <button
                   onClick={closeModal}
                   className="bg-white text-gray-500 hover:text-red-600 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
