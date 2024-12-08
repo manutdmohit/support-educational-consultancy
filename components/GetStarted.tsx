@@ -3,15 +3,45 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GetStartedWith = () => {
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle email submission logic here
-    console.log('Email submitted:', email);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Application submitted successfully!');
+        setFormData({ email: '' });
+      } else {
+        toast.error(data.error || 'Failed to submit application');
+      }
+    } catch (error) {
+      toast.error('Something went wrong. Please try again.');
+    }
   };
+
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+
+  // console.log(formData);
 
   return (
     <section className="relative py-20">
@@ -52,8 +82,10 @@ const GetStartedWith = () => {
           >
             <input
               type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
               placeholder="Enter your email"
               className="text-black flex-grow px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white/80 backdrop-blur-sm"
               required
@@ -67,6 +99,7 @@ const GetStartedWith = () => {
           </motion.form>
         </motion.div>
       </div>
+      <ToastContainer position="bottom-right" />
     </section>
   );
 };

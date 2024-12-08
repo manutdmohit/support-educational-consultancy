@@ -19,6 +19,8 @@ interface FormData {
 }
 
 const ContactPage = () => {
+  const [submitting, setSubmitting] = useState(false);
+
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
@@ -27,15 +29,32 @@ const ContactPage = () => {
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
+    setSubmitting(true);
+
     e.preventDefault();
     try {
-      toast.success('Message sent successfully!');
-      setFormData({ fullName: '', email: '', phone: '', message: '' });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Application submitted successfully!');
+        setFormData({ fullName: '', email: '', phone: '', message: '' });
+      } else {
+        toast.error(data.error || 'Failed to submit application');
+      }
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
     }
   };
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -178,9 +197,10 @@ const ContactPage = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 flex items-center justify-center gap-2 font-medium"
+                disabled={submitting}
               >
                 <FaPaperPlane className="text-sm" />
-                Send Message
+                {submitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
           </motion.div>

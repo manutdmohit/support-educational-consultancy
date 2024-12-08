@@ -17,6 +17,7 @@ interface FormData {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
@@ -24,14 +25,31 @@ const Navbar = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    setSubmitting(true);
+
     e.preventDefault();
-    setIsDialogOpen(false);
     try {
-      toast.success('Message sent successfully!');
-      setFormData({ fullName: '', email: '', phone: '', message: '' });
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Application submitted successfully!');
+        closeModal();
+      } else {
+        toast.error(data.error || 'Failed to submit application');
+      }
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -247,8 +265,9 @@ const Navbar = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white py-4 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                  disabled={submitting}
                 >
-                  Submit Application
+                  {submitting ? 'Submitting...' : 'Submit Application'}
                 </motion.button>
               </form>
             </motion.div>

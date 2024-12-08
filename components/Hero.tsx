@@ -1,9 +1,12 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import Typewriter from 'typewriter-effect';
 
 const HeroSection = () => {
+  const router = useRouter();
+
   return (
     <div className="relative min-h-screen">
       <div
@@ -23,7 +26,10 @@ const HeroSection = () => {
               <span className="text-white">
                 <Typewriter
                   onInit={(typewriter) => {
-                    typewriter.changeDelay(100).typeString('STUDY IN').start();
+                    typewriter
+                      .changeDelay(100)
+                      .typeString('STUDY AND WORK IN')
+                      .start();
                   }}
                   options={{
                     cursor: '',
@@ -84,7 +90,10 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="pt-6">
-              <button className="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition duration-300 mb-4 md:mb-4">
+              <button
+                className="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition duration-300 mb-4 md:mb-4"
+                onClick={() => router.push('/contact')}
+              >
                 Contact Us
               </button>
             </div>
