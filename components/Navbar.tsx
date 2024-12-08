@@ -137,7 +137,7 @@ const Navbar = () => {
                 setIsDialogOpen(true);
                 setIsOpen(false);
               }}
-              className="w-full text-left text-white hover:bg-red-700 px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
+              className="hidden md:flex w-full text-left text-white hover:bg-red-700 px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
             >
               Apply Now
             </button>
