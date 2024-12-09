@@ -66,99 +66,155 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-50 bg-[#000080] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/logo.png"
-                alt="Support Educational Consultancy"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-              <span className="text-sm md:text-xl font-bold text-white">
-                Support Educational Consultancy
-              </span>
-            </Link>
+      <nav className="fixed w-full z-50 shadow-lg">
+        {/* Desktop Layout */}
+        <div className="hidden md:block">
+          {/* Top Section with Logo and Name */}
+          <div className="bg-[#000080]">
+            <div className="w-full max-w-7xl flex items-center justify-center space-x-4 h-16">
+              <Link href="/" className="flex items-center space-x-2">
+                <Image
+                  src="/support-logo-main.jpg"
+                  alt="Support Educational Consultancy"
+                  className="object-contain"
+                  width={50}
+                  height={50}
+                  sizes="100vw"
+                  priority
+                />
 
-            <div className="hidden md:flex items-center space-x-4">
-              {['Home', 'About', 'Services', 'Contact'].map((item) => (
+                <span className="text-white text-2xl font-bold ">
+                  Support Educational Consultancy
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Bottom Section with Navigation */}
+          <div className="bg-[#000080]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-2">
+              <div className="flex items-center justify-center space-x-4">
+                {[
+                  'Home',
+                  'About',
+                  'Services',
+                  'Gallery',
+                  'Test Preparation',
+                  'Contact',
+                ].map((item) => (
+                  <Link
+                    key={item}
+                    href={`/${
+                      item.toLowerCase() === 'home'
+                        ? ''
+                        : item.toLowerCase() === 'test preparation'
+                        ? 'test-preparation'
+                        : item.toLowerCase()
+                    }`}
+                    className="text-white bg-[#a3055b] hover:text-blue-900 px-4 py-2 rounded text-lg font-mono font-bold  transition-all duration-300 hover:bg-blue-50"
+                  >
+                    {item}
+                  </Link>
+                ))}
+                <button
+                  onClick={() => setIsDialogOpen(true)}
+                  className="bg-red-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-red-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="md:hidden bg-[#000080]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <Link href="/" className="flex items-center space-x-2">
+                <div className="relative w-10 h-10">
+                  <Image
+                    src="/support-logo-main.jpg"
+                    alt="Support Educational Consultancy"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <span className="text-sm font-bold text-white">
+                  Support Educational Consultancy
+                </span>
+              </Link>
+              <button
+                className=" bg-white text-blue-900 hover:bg-blue-50 p-2 rounded-md transition-colors duration-200"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {isOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div
+            className={`transition-all duration-300 ease-in-out ${
+              isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            } overflow-hidden bg-gradient-to-r from-blue-900 to-blue-800`}
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {[
+                'Home',
+                'About',
+                'Services',
+                'Gallery',
+                'Test Preparation',
+                'Contact',
+              ].map((item) => (
                 <Link
                   key={item}
                   href={`/${
-                    item.toLowerCase() === 'home' ? '' : item.toLowerCase()
+                    item.toLowerCase() === 'home'
+                      ? ''
+                      : item.toLowerCase() === 'test preparation'
+                      ? 'test-preparation'
+                      : item.toLowerCase()
                   }`}
-                  className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300"
+                  className="text-white hover:bg-white/10 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
+                  onClick={() => setIsOpen(false)}
                 >
                   {item}
                 </Link>
               ))}
               <button
-                onClick={() => setIsDialogOpen(true)}
-                className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 transition-all duration-300"
+                onClick={() => {
+                  setIsDialogOpen(true);
+                  setIsOpen(false);
+                }}
+                className="w-full text-left text-white hover:bg-red-600/90 bg-red-600 px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
               >
                 Apply Now
               </button>
             </div>
-
-            <button
-              className="md:hidden text-white"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div
-          className={`md:hidden transition-all duration-300 ease-in-out ${
-            isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-          } overflow-hidden bg-[#000080]`}
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {['Home', 'About', 'Services', 'Contact'].map((item) => (
-              <Link
-                key={item}
-                href={`/${
-                  item.toLowerCase() === 'home' ? '' : item.toLowerCase()
-                }`}
-                className="text-white hover:bg-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </Link>
-            ))}
-            <button
-              onClick={() => {
-                setIsDialogOpen(true);
-                setIsOpen(false);
-              }}
-              className="hidden md:flex w-full text-left text-white hover:bg-red-700 px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
-            >
-              Apply Now
-            </button>
           </div>
         </div>
       </nav>
