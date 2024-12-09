@@ -136,7 +136,7 @@ const HeroSection = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 md:mb-5 rounded-full hover:shadow-lg transition duration-300"
+              className="bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 mb-5 rounded-full hover:shadow-lg transition duration-300"
               onClick={() => router.push('/contact')}
             >
               Contact Us

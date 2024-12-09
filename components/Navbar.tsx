@@ -205,15 +205,6 @@ const Navbar = () => {
                   {item}
                 </Link>
               ))}
-              <button
-                onClick={() => {
-                  setIsDialogOpen(true);
-                  setIsOpen(false);
-                }}
-                className="w-full text-left text-white hover:bg-red-600/90 bg-red-600 px-3 py-2 rounded-md text-base font-medium transition-all duration-300"
-              >
-                Apply Now
-              </button>
             </div>
           </div>
         </div>
