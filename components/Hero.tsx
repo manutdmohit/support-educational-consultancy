@@ -38,7 +38,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-32">
+      <div className="relative container mx-auto px-4 pt-32">
         <motion.div
           initial="initial"
           animate="animate"
