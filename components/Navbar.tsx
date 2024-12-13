@@ -71,19 +71,18 @@ const Navbar = () => {
         <div className="hidden md:block">
           {/* Top Section with Logo and Name */}
           <div className="bg-[#000080]">
-            <div className="w-full max-w-7xl flex items-center justify-center space-x-4 h-16">
-              <Link href="/" className="flex items-center space-x-2">
+            <div className="w-full max-w-7xl flex items-center justify-center space-x-4 h-20">
+              <Link href="/" className="flex items-center space-x-4">
                 <Image
                   src="/support-logo-main.jpg"
                   alt="Support Educational Consultancy"
-                  className="object-contain"
-                  width={50}
-                  height={50}
-                  sizes="100vw"
+                  className="h-16 w-16 object-contain"
+                  width={64}
+                  height={64}
                   priority
                 />
 
-                <span className="text-white text-2xl font-bold ">
+                <span className="text-2xl lg:text-5xl font-bold text-white whitespace-nowrap">
                   Support Educational Consultancy
                 </span>
               </Link>
@@ -131,17 +130,18 @@ const Navbar = () => {
         <div className="md:hidden bg-[#000080]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
-              <Link href="/" className="flex items-center space-x-2">
+              <Link href="/" className="flex items-center space-x-3">
                 <div className="relative w-10 h-10">
                   <Image
                     src="/support-logo-main.jpg"
                     alt="Support Educational Consultancy"
-                    fill
-                    className="object-contain"
+                    className="h-12 w-12 object-contain"
+                    width={48}
+                    height={48}
                     priority
                   />
                 </div>
-                <span className="text-sm font-bold text-white">
+                <span className="text-xl font-bold text-white">
                   Support Educational Consultancy
                 </span>
               </Link>
