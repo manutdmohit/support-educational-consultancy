@@ -141,7 +141,7 @@ const Navbar = () => {
                     priority
                   />
                 </div>
-                <span className="text-xl font-bold text-white">
+                <span className=" text-lg font-bold text-white">
                   Support Educational Consultancy
                 </span>
               </Link>
