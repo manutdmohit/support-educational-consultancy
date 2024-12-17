@@ -4,6 +4,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import ServiceSection from '@/components/Service';
 import StatsSection from '@/components/Stats';
 import TestimonialsSection from '@/components/Testimonial';
+import DirectorMessage from '@/components/DirectorMessage';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <StatsSection />
       <GetStartedWith />
       <ServiceSection />
+      <DirectorMessage />
       <TestimonialsSection />
     </>
   );
