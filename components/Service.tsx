@@ -80,9 +80,6 @@ const ServicesSection = () => {
                 />
               </div>
               <div className="p-6 mt-auto">
-                <h3 className="text-xl font-semibold text-blue-900 mb-2">
-                  {service.title}
-                </h3>
                 <p className="text-gray-600">{service.description}</p>
               </div>
             </motion.div>
