@@ -25,3 +25,15 @@ body {
     text-wrap: balance;
   }
 }
+
+.text-shadow-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.7),
+    /* Bright green glow */ 0 0 20px rgba(0, 255, 157, 0.5),
+    0 0 30px rgba(0, 255, 157, 0.3), 0 0 40px rgba(0, 255, 157, 0.2);
+}
+
+.text-shadow-glow-red {
+  text-shadow: 0 0 10px rgba(255, 75, 75, 0.7),
+    /* Bright red glow */ 0 0 20px rgba(255, 75, 75, 0.5),
+    0 0 30px rgba(255, 75, 75, 0.3), 0 0 40px rgba(255, 75, 75, 0.2);
+}
