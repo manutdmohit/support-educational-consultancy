@@ -71,7 +71,7 @@ const Navbar = () => {
         <div className="hidden md:block">
           {/* Top Section with Logo and Name */}
           <div className="bg-[#000080]">
-            <div className="w-full max-w-7xl flex items-center justify-center space-x-4 h-20">
+            <div className="w-full max-w-7xl mx-auto flex items-center justify-center space-x-4 h-20">
               <Link href="/" className="flex items-center space-x-4">
                 <Image
                   src="/support-logo-main.jpg"
