@@ -71,7 +71,7 @@ const HeroSection = () => {
         />
       </motion.div>
 
-      <div className="relative z-10 container mx-auto px-4 pt-32">
+      <div className="relative container mx-auto px-4 pt-32">
         <motion.div
           variants={staggerContainer}
           initial="initial"
